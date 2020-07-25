@@ -50,19 +50,35 @@ window.addEventListener("load", function(){
    fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response){
       response.json().then(function(json) {
          const missionTarget = document.getElementById("missionTarget");
-         const jupiter = json[5];
+
+         const randomDestination = json[Math.floor(Math.random() * json.length)];
 
          missionTarget.innerHTML = `
          <h2>Mission Destination</h2>
          <ol>
-            <li>Name: ${jupiter.name}</li>
-            <li>Diameter: ${jupiter.diameter}</li>
-            <li>Star: ${jupiter.star}</li>
-            <li>Distance from Earth: ${jupiter.distance}</li>
-            <li>Number of Moons: ${jupiter.moons}</li>
+            <li>Name: ${randomDestination.name}</li>
+            <li>Diameter: ${randomDestination.diameter}</li>
+            <li>Star: ${randomDestination.star}</li>
+            <li>Distance from Earth: ${randomDestination.distance}</li>
+            <li>Number of Moons: ${randomDestination.moons}</li>
          </ol>
-         <img src="${jupiter.image}">
+         <img src="${randomDestination.image}">
          `;
+
+         //The following is me showing my work to set a chosen planet as the destination before I completed the bonus mission:
+         // const jupiter = json[5];
+
+         // missionTarget.innerHTML = `
+         // <h2>Mission Destination</h2>
+         // <ol>
+         //    <li>Name: ${jupiter.name}</li>
+         //    <li>Diameter: ${jupiter.diameter}</li>
+         //    <li>Star: ${jupiter.star}</li>
+         //    <li>Distance from Earth: ${jupiter.distance}</li>
+         //    <li>Number of Moons: ${jupiter.moons}</li>
+         // </ol>
+         // <img src="${jupiter.image}">
+         // `;
       });
    });
 
