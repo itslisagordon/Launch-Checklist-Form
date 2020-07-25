@@ -31,12 +31,12 @@ window.addEventListener("load", function(){
 
          if (fuelLevel.value < 10000) {
             launchStatus.innerHTML = `Shuttle not ready for launch`;
-            launchStatus.style.color = "red"
-            fuelStatus.innerHTML = `Not enough fuel for journey.`
+            launchStatus.style.color = "red";
+            fuelStatus.innerHTML = `Not enough fuel for journey.`;
             faultyItems.style.visibility = "visible";
          } else if (cargoMass.value > 10000) {
             launchStatus.innerHTML = `Shuttle not ready for launch`;
-            launchStatus.style.color = "red"
+            launchStatus.style.color = "red";
             cargoStatus.innerHTML = `Too much mass for shuttle to take off.`;
             faultyItems.style.visibility = "visible";
          } else {
@@ -44,6 +44,7 @@ window.addEventListener("load", function(){
             launchStatus.innerHTML = "Shuttle is ready for launch";
             fuelStatus.innerHTML = `Fuel level high enough for launch`;
             cargoStatus.innerHTML = `Cargo mass low enough for launch`;
+            // faultyItems.style.visibility = "hidden";
          }
       }
    });
@@ -65,7 +66,8 @@ window.addEventListener("load", function(){
          <img src="${randomDestination.image}">
          `;
 
-         //The following is me showing my work to set a chosen planet as the destination before I completed the bonus mission:
+         //The following is my previous work to set a chosen planet as the destination before completing the bonus mission:
+
          // const jupiter = json[5];
 
          // missionTarget.innerHTML = `
@@ -83,15 +85,3 @@ window.addEventListener("load", function(){
    });
 
 });
-
-/* This block of code shows how to format the HTML once you fetch some planetary JSON!
-<h2>Mission Destination</h2>
-<ol>
-   <li>Name: ${}</li>
-   <li>Diameter: ${}</li>
-   <li>Star: ${}</li>
-   <li>Distance from Earth: ${}</li>
-   <li>Number of Moons: ${}</li>
-</ol>
-<img src="${}">
-*/
