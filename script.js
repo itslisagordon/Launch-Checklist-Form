@@ -24,7 +24,7 @@ window.addEventListener("load", function(){
       if(pilotName.value === "" || copilotName.value === "" || fuelLevel.value === "" || cargoMass.value === ""){
          alert("All fields are required!"); 
       } else if (!isNaN(pilotName.value) || !isNaN(copilotName.value) || isNaN(fuelLevel.value) || isNaN(cargoMass.value)){
-         alert("Invalid Input!");
+         alert("Make sure to enter valid information for each field!");
       } else {
          pilotStatus.innerHTML = `Pilot Ready - ${pilotName.value}`;
          copilotStatus.innerHTML = `Co-pilot Ready - ${copilotName.value}`;
@@ -42,22 +42,29 @@ window.addEventListener("load", function(){
          } else {
             launchStatus.style.color = "green";
             launchStatus.innerHTML = "Shuttle is ready for launch";
-            // pilotStatus.innerHTML = `Pilot Ready - ${pilotName.value}`;
-            // copilotStatus.innerHTML = `Co-pilot Ready - ${copilotName.value}`;
             fuelStatus.innerHTML = `Fuel level high enough for launch`;
             cargoStatus.innerHTML = `Cargo mass low enough for launch`;
-            faultyItems.style.visibility = "visible";
          }
       }
    });
-
    fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response){
-         response.json().then(function(json) {
-            
-         });
+      response.json().then(function(json) {
+         const missionTarget = document.getElementById("missionTarget");
+         const jupiter = json[5];
 
-         // TODO: do something after fetching and receiving a response
+         missionTarget.innerHTML = `
+         <h2>Mission Destination</h2>
+         <ol>
+            <li>Name: ${jupiter.name}</li>
+            <li>Diameter: ${jupiter.diameter}</li>
+            <li>Star: ${jupiter.star}</li>
+            <li>Distance from Earth: ${jupiter.distance}</li>
+            <li>Number of Moons: ${jupiter.moons}</li>
+         </ol>
+         <img src="${jupiter.image}">
+         `;
       });
+   });
 
 });
 
